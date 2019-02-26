@@ -50,15 +50,26 @@ namespace GeradorArquivosAFD
 
                     if (data.DayOfWeek != DayOfWeek.Saturday && data.DayOfWeek != DayOfWeek.Sunday)
                     {
-                        var numeroLinhaFmt = numeroLinha.ToString().PadLeft(9, '0');
+
 
                         Console.WriteLine(diaFmt + "/" + mesFmt + "/" + ano);
-                        var linha = numeroLinhaFmt + tipoRegistro + diaFmt + mesFmt + ano;
+
                         foreach (string pis in listaPis)
                         {
+                            var numeroLinhaFmt = numeroLinha.ToString().PadLeft(9, '0');
+                            var linha = numeroLinhaFmt + tipoRegistro + diaFmt + mesFmt + ano;
                             writer.WriteLine(gerarBatidas(linha, pis, "0800"));
+                            numeroLinha++;
+                            numeroLinhaFmt = numeroLinha.ToString().PadLeft(9, '0');
+                            linha = numeroLinhaFmt + tipoRegistro + diaFmt + mesFmt + ano;
                             writer.WriteLine(gerarBatidas(linha, pis, "1200"));
+                            numeroLinha++;
+                            numeroLinhaFmt = numeroLinha.ToString().PadLeft(9, '0');
+                            linha = numeroLinhaFmt + tipoRegistro + diaFmt + mesFmt + ano;
                             writer.WriteLine(gerarBatidas(linha, pis, "1400"));
+                            numeroLinha++;
+                            numeroLinhaFmt = numeroLinha.ToString().PadLeft(9, '0');
+                            linha = numeroLinhaFmt + tipoRegistro + diaFmt + mesFmt + ano;
                             writer.WriteLine(gerarBatidas(linha, pis, "1800"));
                             numeroLinha++;
                         }
